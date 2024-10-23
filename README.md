@@ -70,6 +70,32 @@ No se necesitan dependencias adicionales. Todo se carga a través de CDN en el n
 - **Genérico**: Reemplaza entidades detectadas con términos genéricos como `[persona]`, `[lugar]`, `[organización]`.
 - **Avanzado**: Reemplaza entidades con datos falsos pero verosímiles, generados con Faker.js.
 
+### Selección del Modelo
+
+En el archivo `index.js`, se puede modificar el modelo que se desea utilizar para el proceso de clasificación de entidades (NER). Por defecto, el sistema carga un modelo desde Hugging Face, pero también es posible seleccionar un modelo almacenado localmente.
+
+- **Modificación del modelo**: En el archivo `index.js`, localiza las líneas donde se define el modelo cargado, similares a las siguientes:
+  
+  ```javascript
+  env.allowLocalModels = false;
+  const pipe = await pipeline('token-classification', 'Xenova/bert-base-multilingual-cased-ner-hrl');
+  ```
+Para cambiar el modelo, debes modificar el nombre del modelo de Hugging Face o proporcionar la ruta de un modelo local, colocando la propiedad allowLocalModels como True. Recuerda que siempre debes asegurarte de que el modelo a utilizar esté compilado en ONNX.
+
+- **Estructura del modelo**: Este proyecto usa la librería de Transformers.js, por lo que además de ser un modelo compilado en ONNX, debe seguir cierta estructura similar a esta:
+```
+bert-base-uncased/
+├── config.json
+├── tokenizer.json
+├── tokenizer_config.json
+└── onnx/
+    ├── model.onnx
+    └── model_quantized.onnx
+```
+En caso de que tengas un modelo preentrenado en un formato distinto a ONNX, puedes utilizar el [script de conversión de HuggingFace](https://github.com/huggingface/transformers.js/blob/main/scripts/convert.py)
+
+- **Etiquetas esperadas**: Es importante que el modelo utilice las etiquetas estándar para entidades nombradas: `PER` (persona), `LOC` (ubicación), `ORG` (organización) y `MISC` (misceláneo). Si el modelo utiliza etiquetas diferentes, la herramienta puede no funcionar correctamente.
+
 ## 🎯 Objetivos y Beneficios
 
 El objetivo principal de este proyecto es proporcionar una herramienta que permita a los profesionales de la salud, investigadores, y organizaciones manejar registros médicos de manera segura, asegurando la protección de la identidad de los pacientes.
