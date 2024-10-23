@@ -32,17 +32,17 @@ El propósito de este proyecto es proporcionar una herramienta fácil de usar pa
 
 1. **Clona el repositorio**:
    ```bash
-   git clone https://github.com/SantiagoMB13/Despliegue-Modelo-de-Anonimizacion.git
+   git clone https://github.com/SantiagoMB13/Safe-Records.git
 2. **Navega a la carpeta del proyecto**:
     ```bash
-    cd Despliegue-Modelo-de-Anonimizacion
+    cd Safe-Records
 3. **Despliega el programa en un servidor local usando Docker**:
 
    - **Si no tienes Docker instalado**, puedes descargarlo [aquí](https://docs.docker.com/get-docker/).
    
    - **Construir la imagen de Docker**:
      ```bash
-     docker build -t mi-proyecto-web .
+     docker build -t Safe-Records .
      ```
 
    - **Ejecutar el contenedor**:
