@@ -31,9 +31,9 @@ async function runNER(inputText, mode, filename = '') {
         let replacedText = replacedTextLines.join('\n');
         replacedText = secondaryReplacements(replacedText, mode);
         
-        loadingLabel.remove(); // Remove the loading message
+        loadingLabel.remove();
         await displayResults(inputText, replacedText, filename);
-        // If only one file is processed, enable the single file download
+        // Si solo se analiza un archivo, se muestra el botón de descarga individual
         if (filename && document.getElementById('file-input').files.length === 1) {
             document.getElementById('downloadSingleBtn').style.display = 'block';
             document.getElementById('downloadZipBtn').style.display = 'none';

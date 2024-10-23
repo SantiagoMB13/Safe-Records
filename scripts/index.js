@@ -7,7 +7,7 @@ import JSZip from 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm';
 import pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@2.10.377/+esm';
 import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.0';
 
-// Load the model from Hugging Face
+// Manejo del modelo de Hugging Face
 env.allowLocalModels = false;
 const pipe = await pipeline('token-classification', 'Xenova/bert-base-multilingual-cased-ner-hrl');
 
@@ -43,10 +43,9 @@ function verifyLabels(labels) {
 
 verifyLabels(labels);
 
-// Set the workerSrc for pdf.js
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
 
-// Initialize global variables
+// Inicializar variables globales
 let zip = new JSZip();
 let anonymizedText = '';
 let usingFile = false;
@@ -57,19 +56,16 @@ let usedFilenames = new Set();
 let usedFiletypes = new Set();
 let anonymizedTexts = new Map();
 
-// Muestra el popup
 function showPopup() {
     var popup = document.getElementById('popup');
-    popup.style.display = 'flex'; // Cambia a 'flex' para mostrar el popup
+    popup.style.display = 'flex';
 }
 
-// Esconde el popup
 function hidePopup() {
     var popup = document.getElementById('popup');
-    popup.style.display = 'none'; // Cambia a 'none' para esconder el popup
+    popup.style.display = 'none'; 
 }
 
-// Evento para el botón de subir archivos (para limpiar el input) cuando se da click
 document.getElementById('file-input').addEventListener('click', function() {
     this.value = null;
 });
@@ -190,7 +186,6 @@ function clearData() {
     document.getElementById('file-input').value = '';
 }
 
-// Event listener for the download zip button
 document.getElementById('downloadZipBtn').addEventListener('click', () => {
     generateZip();
 });

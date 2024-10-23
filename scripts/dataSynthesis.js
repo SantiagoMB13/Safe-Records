@@ -5,16 +5,16 @@ async function displayResults(originalText, replacedText, filename = '') {
    try {
     const resultDiv = document.getElementById('result');
 
-    // Create the container to display texts side by side
+    // Crear contenedor para los resultados
     const container = document.createElement('div');
     container.className = 'result-container';
 
-    // Create the container for the original text
+    // Contenedor para el texto original
     const originalContainer = document.createElement('div');
     originalContainer.className = 'text-container';
     originalContainer.innerHTML = '<h3>Texto Original</h3><pre>' + originalText + '</pre>';
 
-    // Create the container for the anonymized text
+    // Contenedor para el texto anonimizado
     const anonymizedContainer = document.createElement('div');
     anonymizedContainer.className = 'text-container';
     const anonymizedTextArea = document.createElement('textarea');
@@ -24,7 +24,7 @@ async function displayResults(originalText, replacedText, filename = '') {
     anonymizedContainer.innerHTML = '<h3>Texto Anonimizado (Editable)</h3>';
     anonymizedContainer.appendChild(anonymizedTextArea);
 
-    // Add event listener to update the anonymized text when edited
+    // Event listener para actualizar el texto anonimizado
     anonymizedTextArea.addEventListener('input', function() {
         const updatedText = this.value;
         anonymizedTexts.set(filename, updatedText);
@@ -34,10 +34,9 @@ async function displayResults(originalText, replacedText, filename = '') {
         }
     });
 
-    // Add the containers to the main container
     container.appendChild(originalContainer);
     container.appendChild(anonymizedContainer);
-    // Add the main container to the results div
+
     if (registers > 1) {
         const fileresult = document.createElement('div');
         fileresult.className = 'file-result';
@@ -48,10 +47,9 @@ async function displayResults(originalText, replacedText, filename = '') {
         fileresult.appendChild(container);
         resultDiv.appendChild(fileresult);
         
-        // Initialize the container as hidden
         container.style.display = 'none';
         
-        // Add click event to toggle visibility
+        // Evento para manejar visibilidad del contenedor
         displaybtn.addEventListener('click', function() {
             this.classList.toggle('active');
             if (container.style.display === "none" || container.style.display === "") {
@@ -63,7 +61,7 @@ async function displayResults(originalText, replacedText, filename = '') {
     } else {
         resultDiv.appendChild(container);
     }
-    // Add the anonymized text to the map and zip file
+    // Agrega el texto anonimizado al mapa y al archivo zip
     anonymizedTexts.set(filename, replacedText);
     updateZipFile(filename, replacedText);
    } catch (error) {
@@ -101,8 +99,6 @@ function generateZip() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-
-        // Clear the processed filenames and anonymized texts after the zip is generated
         usedFilenames.clear();
         usedFiletypes.clear();
         anonymizedTexts.clear();

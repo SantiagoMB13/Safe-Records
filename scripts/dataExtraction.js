@@ -3,11 +3,10 @@ import { runNER } from './aiProcessing.js';
 import { pdfjsLib } from './index.js';
 
 async function processFile(file, mode) {
-    // Check if the file is empty
     if (file.size === 0) {
         console.log(`Skipping emptyy file: ${file.name}`);
         updateRegisters(registers - 1);
-        return Promise.resolve(); // Skip processing for empty files
+        return Promise.resolve(); // Saltar archivos vacíos
     }
 
     const reader = new FileReader();
