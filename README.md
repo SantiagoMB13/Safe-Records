@@ -66,6 +66,7 @@ No se necesitan dependencias adicionales. Todo se carga a través de CDN en el n
 ### Anonimización de Texto y Archivos
    - Ingresa o pega el texto en el campo de texto.
    - Sube uno o más archivos (.txt, .pdf, .docx).
+   - Verifica el modelo que vas a utilizar para la anonimización y cámbialo según consideres necesario.
    - Selecciona el modo de anonimización: **Genérico** o **Avanzado**.
    - Haz click en **"Anonimizar"**.
    - Verifica los resultados de la anonimización y editalos a tu gusto según consideres conveniente.
