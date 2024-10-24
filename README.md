@@ -104,7 +104,7 @@ bert-base-uncased/
     ├── model.onnx
     └── model_quantized.onnx
 ```
-En caso de que tengas un modelo preentrenado en un formato distinto a ONNX, puedes utilizar el [script de conversión de HuggingFace](https://github.com/huggingface/transformers.js/blob/main/scripts/convert.py)
+  En caso de que tengas un modelo preentrenado en un formato distinto a ONNX, puedes utilizar el [script de conversión de HuggingFace](https://github.com/huggingface/transformers.js/blob/main/scripts/convert.py)
 
 - **Etiquetas esperadas**: Es importante que el modelo utilice las etiquetas estándar para entidades nombradas: `PER` (persona), `LOC` (ubicación), `ORG` (organización) y `MISC` (misceláneo). Si el modelo utiliza etiquetas diferentes, la herramienta puede no funcionar correctamente.
 
