@@ -55,6 +55,8 @@ El propósito de este proyecto es proporcionar una herramienta fácil de usar pa
 
 4. **Accede a la aplicación** desde tu navegador en `http://localhost:8080`.
 
+**NOTA**: El programa funciona cargando localmente un modelo preentrenado de HuggingFace para la anonimización de registros médicos. Esto permite procesar los datos en tiempo real sin depender de servidores externos, lo que garantiza un control total sobre los datos. Es decir que se necesita una conexión a internet para la carga del modelo, pero no es necesario para la ejecución del mismo una vez ya sea cargado.
+
 ## ⚙️ Requisitos
 
 No se necesitan dependencias adicionales. Todo se carga a través de CDN en el navegador. Sin embargo, si quieres desplegarla localmente en un contenedor debes tener Docker instalado en tu equipo.
@@ -74,6 +76,12 @@ No se necesitan dependencias adicionales. Todo se carga a través de CDN en el n
 - **Avanzado**: Reemplaza entidades con datos falsos pero verosímiles, generados con Faker.js.
 
 ### Selección del Modelo
+
+**Carga desde HuggingFace**
+El programa permite cargar un modelo de HuggingFace que cumpla con los requisitos necesarios. Para esto en la sección de selección del modelo puede cambiar el que se carga por defecto reemplazando el nombre que aparece en el repositorio de HuggingFace. Por ejemplo:
+```
+Xenova/distilbert-base-multilingual-cased-ner-hrl
+```
 
 En el archivo `index.js`, se puede modificar el modelo que se desea utilizar para el proceso de clasificación de entidades (NER). Por defecto, el sistema carga un modelo desde Hugging Face, pero también es posible seleccionar un modelo almacenado localmente.
 
