@@ -16,6 +16,9 @@ El propósito de este proyecto es proporcionar una herramienta fácil de usar pa
 
 ## 🛠️ Tecnologías Utilizadas
 
+- **HuggingFace**: Plataforma para implementar modelos de machine learning.
+- **PyTorch**: Framework de deep learning utilizado para entrenar y desplegar modelos.
+- **ONNX**: Formato abierto para representar modelos de machine learning, facilitando su interoperabilidad entre diferentes frameworks.
 - **JavaScript**: Lenguaje principal para la lógica de la aplicación.
 - **Transformers.js**: Biblioteca para desplegar modelos de Hugging Face directamente en el navegador.
 - **Faker.js**: Genera datos falsos pero realistas para la anonimización avanzada.
@@ -32,25 +35,27 @@ El propósito de este proyecto es proporcionar una herramienta fácil de usar pa
 
 1. **Clona el repositorio**:
    ```bash
-   git clone https://github.com/SantiagoMB13/Despliegue-Modelo-de-Anonimizacion.git
+   git clone https://github.com/SantiagoMB13/Safe-Records.git
 2. **Navega a la carpeta del proyecto**:
     ```bash
-    cd Despliegue-Modelo-de-Anonimizacion
+    cd Safe-Records
 3. **Despliega el programa en un servidor local usando Docker**:
 
    - **Si no tienes Docker instalado**, puedes descargarlo [aquí](https://docs.docker.com/get-docker/).
    
    - **Construir la imagen de Docker**:
      ```bash
-     docker build -t mi-proyecto-web .
+     docker build -t Safe-Records .
      ```
 
    - **Ejecutar el contenedor**:
      ```bash
-     docker run -d -p 8080:80 mi-proyecto-web
+     docker run -d -p 8080:80 Safe-Records
      ```
 
 4. **Accede a la aplicación** desde tu navegador en `http://localhost:8080`.
+
+**NOTA**: El programa funciona cargando localmente un modelo preentrenado de HuggingFace para la anonimización de registros médicos. Esto permite procesar los datos en tiempo real sin depender de servidores externos, lo que garantiza un control total sobre los datos. Es decir que se necesita una conexión a internet para la carga del modelo, pero no es necesario para la ejecución del mismo una vez ya sea cargado.
 
 ## ⚙️ Requisitos
 
@@ -61,6 +66,7 @@ No se necesitan dependencias adicionales. Todo se carga a través de CDN en el n
 ### Anonimización de Texto y Archivos
    - Ingresa o pega el texto en el campo de texto.
    - Sube uno o más archivos (.txt, .pdf, .docx).
+   - Verifica el modelo que vas a utilizar para la anonimización y cámbialo según consideres necesario.
    - Selecciona el modo de anonimización: **Genérico** o **Avanzado**.
    - Haz click en **"Anonimizar"**.
    - Verifica los resultados de la anonimización y editalos a tu gusto según consideres conveniente.
@@ -72,15 +78,21 @@ No se necesitan dependencias adicionales. Todo se carga a través de CDN en el n
 
 ### Selección del Modelo
 
-En el archivo `index.js`, se puede modificar el modelo que se desea utilizar para el proceso de clasificación de entidades (NER). Por defecto, el sistema carga un modelo desde Hugging Face, pero también es posible seleccionar un modelo almacenado localmente.
-
-- **Modificación del modelo**: En el archivo `index.js`, localiza las líneas donde se define el modelo cargado, similares a las siguientes:
+**Carga desde HuggingFace**:
+El programa permite cargar fácilmente el modelo por otro modelo preentrenado de HuggingFace que cumpla con los requisitos necesarios. Para esto en el input de "selección del modelo" puede cambiar el que se carga por defecto reemplazando el nombre que aparece en el repositorio de HuggingFace. Por ejemplo:
+```
+Xenova/distilbert-base-multilingual-cased-ner-hrl
+```
+**Carga de un modelo local**:
+En el archivo `index.js`, se puede modificar el modelo que se desea utilizar para el proceso de clasificación de entidades (NER). Por defecto, el sistema carga un modelo desde Hugging Face, pero también es posible seleccionar un modelo almacenado localmente. Para esto, localiza las siguientes líneas donde se define el modelo cargado en el archivo `index.js`:
   
   ```javascript
   env.allowLocalModels = false;
   const pipe = await pipeline('token-classification', 'Xenova/bert-base-multilingual-cased-ner-hrl');
   ```
 Para cambiar el modelo, debes modificar el nombre del modelo de Hugging Face o proporcionar la ruta de un modelo local, colocando la propiedad allowLocalModels como True. Recuerda que siempre debes asegurarte de que el modelo a utilizar esté compilado en ONNX.
+
+**Requisitos del modelo**: Aunque la solución permite cambiar el modelo fácilmente, este debe cumplir con los siguientes requisitos:
 
 - **Estructura del modelo**: Este proyecto usa la librería de Transformers.js, por lo que además de ser un modelo compilado en ONNX, debe seguir cierta estructura similar a esta:
 ```
@@ -92,9 +104,11 @@ bert-base-uncased/
     ├── model.onnx
     └── model_quantized.onnx
 ```
-En caso de que tengas un modelo preentrenado en un formato distinto a ONNX, puedes utilizar el [script de conversión de HuggingFace](https://github.com/huggingface/transformers.js/blob/main/scripts/convert.py)
 
 - **Etiquetas esperadas**: Es importante que el modelo utilice las etiquetas estándar para entidades nombradas: `PER` (persona), `LOC` (ubicación), `ORG` (organización) y `MISC` (misceláneo). Si el modelo utiliza etiquetas diferentes, la herramienta puede no funcionar correctamente.
+
+**NOTA**: 
+En caso de que tengas un modelo preentrenado en un formato distinto a ONNX, puedes utilizar el [script de conversión de HuggingFace](https://github.com/huggingface/transformers.js/blob/main/scripts/convert.py) para compilarlo a formato ONNX. Este script generará el modelo ONNX con la estructura mencionada en el punto anterior.
 
 ## 🎯 Objetivos y Beneficios
 
