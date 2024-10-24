@@ -16,6 +16,9 @@ El propósito de este proyecto es proporcionar una herramienta fácil de usar pa
 
 ## 🛠️ Tecnologías Utilizadas
 
+- **HuggingFace**: Plataforma para implementar modelos de machine learning.
+- **PyTorch**: Framework de deep learning utilizado para entrenar y desplegar modelos.
+- **ONNX**: Formato abierto para representar modelos de machine learning, facilitando su interoperabilidad entre diferentes frameworks.
 - **JavaScript**: Lenguaje principal para la lógica de la aplicación.
 - **Transformers.js**: Biblioteca para desplegar modelos de Hugging Face directamente en el navegador.
 - **Faker.js**: Genera datos falsos pero realistas para la anonimización avanzada.
