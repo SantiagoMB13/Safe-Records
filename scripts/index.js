@@ -8,7 +8,7 @@ import pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@2.10.377/+esm';
 import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.0';
 
 // Añadir estas variables al inicio del archivo index.js
-let currentModel = 'Xenova/bert-base-multilingual-cased-ner-hrl';
+let currentModel = 'SantiMB/roberta-base-bne-capitel-ner-plus-ONNX';
 let modelSelector;
 let changeModelBtn;
 let pipe;
