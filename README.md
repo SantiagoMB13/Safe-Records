@@ -78,11 +78,11 @@ No se necesitan dependencias adicionales. Todo se carga a través de CDN en el n
 ### Selección del Modelo
 
 **Carga desde HuggingFace**:
-El programa permite cargar un modelo de HuggingFace que cumpla con los requisitos necesarios. Para esto en la sección de selección del modelo puede cambiar el que se carga por defecto reemplazando el nombre que aparece en el repositorio de HuggingFace. Por ejemplo:
+El programa permite cargar fácilmente el modelo por otro modelo preentrenado de HuggingFace que cumpla con los requisitos necesarios. Para esto en el input de "selección del modelo" puede cambiar el que se carga por defecto reemplazando el nombre que aparece en el repositorio de HuggingFace. Por ejemplo:
 ```
 Xenova/distilbert-base-multilingual-cased-ner-hrl
 ```
-
+**Carga de un modelo local**:
 En el archivo `index.js`, se puede modificar el modelo que se desea utilizar para el proceso de clasificación de entidades (NER). Por defecto, el sistema carga un modelo desde Hugging Face, pero también es posible seleccionar un modelo almacenado localmente.
 
 - **Modificación del modelo**: En el archivo `index.js`, localiza las líneas donde se define el modelo cargado, similares a las siguientes:
