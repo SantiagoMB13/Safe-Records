@@ -7,12 +7,80 @@ import JSZip from 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm';
 import pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@2.10.377/+esm';
 import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.0';
 
-// Manejo del modelo de Hugging Face
-env.allowLocalModels = false;
-const pipe = await pipeline('token-classification', 'Xenova/bert-base-multilingual-cased-ner-hrl');
+// Añadir estas variables al inicio del archivo index.js
+let currentModel = 'Xenova/bert-base-multilingual-cased-ner-hrl';
+let modelSelector;
+let changeModelBtn;
+let pipe;
 
-// Acceder a los labels del modelo
-const labels = pipe.model.config.id2label;
+// Modificar la función de carga del modelo
+async function loadModel(modelName) {
+    try {
+        env.allowLocalModels = false;
+        pipe = await pipeline('token-classification', modelName);
+        
+        // Verificar los labels después de cargar el modelo
+        if (!verifyLabels(pipe.model.config.id2label)) { //Lables del modelo como parametros
+            throw new Error('El modelo no contiene los labels necesarios');
+        }
+        return true;
+    } catch (error) {
+        Swal.fire({
+            title: "Error",
+            text: "No se pudo cargar el modelo correctamente. Por favor, asegúrate de que el modelo esté en el formato correcto y contenga todos los archivos necesarios.",
+            icon: "error",
+            confirmButtonColor: '#1f2937'
+        });
+        return false;
+    }
+}
+
+// Añadir después de la carga inicial del documento
+document.addEventListener('DOMContentLoaded', async () => {
+    modelSelector = document.getElementById('model-selector');
+    changeModelBtn = document.getElementById('change-model-btn');
+    
+    // Cargar el modelo inicial
+    await loadModel(currentModel);
+    
+    // Añadir evento para cambiar el modelo
+    changeModelBtn.addEventListener('click', async () => {
+        const newModel = modelSelector.value.trim();
+        if (newModel && newModel !== currentModel) {
+            Swal.fire({
+                title: "Cargando modelo...",
+                text: "Por favor espere mientras se carga el nuevo modelo",
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+            
+            if (await loadModel(newModel)) {
+                currentModel = newModel;
+                Swal.close();
+                Swal.fire({
+                    title: "Éxito",
+                    text: "Modelo cargado correctamente",
+                    icon: "success",
+                    confirmButtonColor: '#1f2937'
+                });
+            } else {
+                modelSelector.value = currentModel;
+            }
+            
+            //
+        }
+    });
+    
+    // Permitir cambiar el modelo con Enter
+    modelSelector.addEventListener('keypress', async (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            changeModelBtn.click();
+        }
+    });
+});
 
 function verifyLabels(labels) {
     // Variables para almacenar si se encontraron los labels
@@ -40,8 +108,6 @@ function verifyLabels(labels) {
       });
     return hasPER && hasLOC && hasORG;
 }
-
-verifyLabels(labels);
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
 
@@ -102,8 +168,6 @@ document.getElementById('runmodelbtn').addEventListener('click', async () => {
         registers = registers + 1;
     }
     const oriregs = registers;
-    console.log('Número de registros:', oriregs);
-    console.log(emptyfiles);
     if (files.length > 0) {
         zip = new JSZip(); 
         // Crear un array de promesas
@@ -120,7 +184,6 @@ document.getElementById('runmodelbtn').addEventListener('click', async () => {
         textareaContent = inputText;
         await runNER(inputText, mode, 'texto_ingresado.txt');
     }
-    console.log(emptyfiles);
     if (registers > 1) {
         usingFile = true;
         document.getElementById('downloadSingleBtn').style.display = 'none';

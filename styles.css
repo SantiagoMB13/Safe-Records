@@ -135,3 +135,43 @@
 #input-text::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+#model-selector {
+    transition: all 0.3s ease;
+    width: 80%;
+}
+
+#model-selector:focus {
+    border-color: #6b7280;
+    box-shadow: 0 0 0 1px rgba(107, 114, 128, 0.2);
+}
+
+#change-model-btn {
+    transition: all 0.2s ease;
+}
+
+#change-model-btn:hover {
+    transform: scale(1.1);
+}
+
+.model-selector-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.model-selector-container svg {
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+}
+
+#anonmodelabel{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#buttonconti{
+    margin-top: 0;
+    padding-top: 0;
+}

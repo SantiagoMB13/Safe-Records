@@ -53,12 +53,36 @@
                     </div>
                 </div>
 
-                <div class="flex items-center space-x-4">
-                    <select id="anonimization-mode" class="w-[180px] p-2 border rounded-md">
+                <!-- Añadir después del selector de modo de anonimización -->
+                <div class="flex items-center space-x-4 mt-4">
+                    <svg class="inline-block mr-2 h-5 w-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <div class="flex-grow">
+                        <label for="model-selector" class="block text-sm font-medium text-gray-700">Modelo actual:</label>
+                        <div class="mt-1 relative rounded-md shadow-sm">
+                            <input type="text" id="model-selector" name="model-selector" 
+                                class="focus:ring-gray-500 focus:border-gray-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
+                                placeholder="Xenova/bert-base-multilingual-cased-ner-hrl"
+                                value="Xenova/bert-base-multilingual-cased-ner-hrl">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                <button id="change-model-btn" class="text-gray-400 hover:text-gray-600">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <label for="anonimization-mode" class="block text-sm font-medium text-gray-700" id="anonmodelabel">Modo de anonimización:</label>
+                <div class="flex items-center space-x-4" id="buttonconti">
+                    <select id="anonimization-mode" class="w-2/6 p-2 border rounded-md">
                         <option value="generic">Genérico</option>
                         <option value="advanced">Avanzado</option>
                     </select>
-                    <button id="runmodelbtn" class="flex-grow bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors group">
+                    <button id="runmodelbtn" class="w-5/6 bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors group">
                         <svg class="inline-block mr-2 h-5 w-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
                         </svg>
