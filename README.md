@@ -84,15 +84,15 @@ El programa permite cargar fácilmente el modelo por otro modelo preentrenado de
 Xenova/distilbert-base-multilingual-cased-ner-hrl
 ```
 **Carga de un modelo local**:
-En el archivo `index.js`, se puede modificar el modelo que se desea utilizar para el proceso de clasificación de entidades (NER). Por defecto, el sistema carga un modelo desde Hugging Face, pero también es posible seleccionar un modelo almacenado localmente.
-
-- **Modificación del modelo**: En el archivo `index.js`, localiza las líneas donde se define el modelo cargado, similares a las siguientes:
+En el archivo `index.js`, se puede modificar el modelo que se desea utilizar para el proceso de clasificación de entidades (NER). Por defecto, el sistema carga un modelo desde Hugging Face, pero también es posible seleccionar un modelo almacenado localmente. Para esto, localiza las siguientes líneas donde se define el modelo cargado en el archivo `index.js`:
   
   ```javascript
   env.allowLocalModels = false;
   const pipe = await pipeline('token-classification', 'Xenova/bert-base-multilingual-cased-ner-hrl');
   ```
 Para cambiar el modelo, debes modificar el nombre del modelo de Hugging Face o proporcionar la ruta de un modelo local, colocando la propiedad allowLocalModels como True. Recuerda que siempre debes asegurarte de que el modelo a utilizar esté compilado en ONNX.
+
+**Requisitos del modelo**: Aunque la solución permite cambiar el modelo fácilmente, este debe cumplir con los siguientes requisitos:
 
 - **Estructura del modelo**: Este proyecto usa la librería de Transformers.js, por lo que además de ser un modelo compilado en ONNX, debe seguir cierta estructura similar a esta:
 ```
