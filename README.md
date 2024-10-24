@@ -50,7 +50,7 @@ El propósito de este proyecto es proporcionar una herramienta fácil de usar pa
 
    - **Ejecutar el contenedor**:
      ```bash
-     docker run -d -p 8080:80 mi-proyecto-web
+     docker run -d -p 8080:80 Safe-Records
      ```
 
 4. **Accede a la aplicación** desde tu navegador en `http://localhost:8080`.
