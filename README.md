@@ -77,7 +77,7 @@ No se necesitan dependencias adicionales. Todo se carga a través de CDN en el n
 
 ### Selección del Modelo
 
-**Carga desde HuggingFace**
+**Carga desde HuggingFace**:
 El programa permite cargar un modelo de HuggingFace que cumpla con los requisitos necesarios. Para esto en la sección de selección del modelo puede cambiar el que se carga por defecto reemplazando el nombre que aparece en el repositorio de HuggingFace. Por ejemplo:
 ```
 Xenova/distilbert-base-multilingual-cased-ner-hrl
