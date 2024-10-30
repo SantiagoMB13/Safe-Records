@@ -7,13 +7,38 @@ import JSZip from 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm';
 import pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@2.10.377/+esm';
 import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.0';
 
-// Añadir estas variables al inicio del archivo index.js
-let currentModel = 'SantiMB/roberta-base-bne-capitel-ner-plus-ONNX';
+let currentModel = 'SantiMB/roberta-base-bne-capitel-ner-plus-ONNX'; // Modelo inicial
 let modelSelector;
 let changeModelBtn;
 let pipe;
 
-// Modificar la función de carga del modelo
+function showLoadingPopup() {
+    Swal.fire({
+        title: "Cargando...",
+        text: "Por favor espera a que todos los recursos se carguen",
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+}
+
+function hideLoadingPopup() {
+    Swal.close();
+}
+
+async function waitForResources() {
+    showLoadingPopup();
+    try {
+        await loadModel(currentModel);
+        // Cargar los recursos necesarios si se deciden añadir más
+    } catch (error) {
+        console.error("Error en la carga de recursos:", error);
+    } finally {
+        hideLoadingPopup();
+    }
+}
+
 async function loadModel(modelName) {
     try {
         env.allowLocalModels = false;
@@ -35,13 +60,12 @@ async function loadModel(modelName) {
     }
 }
 
-// Añadir después de la carga inicial del documento
 document.addEventListener('DOMContentLoaded', async () => {
     modelSelector = document.getElementById('model-selector');
     changeModelBtn = document.getElementById('change-model-btn');
     
-    // Cargar el modelo inicial
-    await loadModel(currentModel);
+    // Cargar los recursos necesarios
+    await waitForResources();
     
     // Añadir evento para cambiar el modelo
     changeModelBtn.addEventListener('click', async () => {
