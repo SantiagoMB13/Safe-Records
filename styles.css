@@ -137,7 +137,7 @@
 }
 
 #model-selector {
-    transition: all 0.3s ease;
+    transition: none; /*all 0.3s ease; */
     width: 80%;
 }
 
@@ -174,5 +174,69 @@
 #buttonconti{
     margin-top: 0;
     padding-top: 0;
+}
+
+#change-model-btn{
+    width: 25%;
+}
+
+datalist {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+input[list]::-webkit-calendar-picker-indicator {
+    color: #6b7280;
+    font-size: 14px;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+input[list]::-webkit-calendar-picker-indicator:hover {
+    opacity: 0.7;
+}
+
+option {
+    padding: 0.75rem 1rem;
+    color: #4b5563;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+option:hover {
+    background-color: #f3f4f6;
+}
+
+option:checked {
+    background-color: #e5e7eb;
+    font-weight: 600;
+}
+
+/* Estilo para el contenedor del datalist */
+.datalist-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Estilo para el input asociado al datalist */
+input[list] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background-color: white;
+    color: #1f2937;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+input[list]:focus {
+    outline: none;
+    border-color: #6b7280;
+    box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.2);
 }
 

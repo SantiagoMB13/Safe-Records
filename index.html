@@ -62,28 +62,34 @@
                 </div>
 
                 <!-- Añadir después del selector de modo de anonimización -->
-                <div class="flex items-center space-x-4 mt-4">
+                <div class="flex items-center mt-4 w-full">
                     <svg class="inline-block mr-2 h-5 w-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <div class="flex-grow">
+                    <div class="w-full">
                         <label for="model-selector" class="block text-sm font-medium text-gray-700">Modelo actual:</label>
-                        <div class="mt-1 relative rounded-md shadow-sm">
+                        <div class="mt-1 flex h-10 rounded-md shadow-sm w-full">
                             <input type="text" id="model-selector" name="model-selector" 
-                                class="focus:ring-gray-500 focus:border-gray-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
-                                placeholder="SantiMB/roberta-base-bne-capitel-ner-plus-ONNX"
-                                value="SantiMB/roberta-base-bne-capitel-ner-plus-ONNX">
-                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-                                <button id="change-model-btn" class="text-gray-400 hover:text-gray-600">
-                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                </button>
-                            </div>
+                                class="focus:ring-gray-500 focus:border-gray-500 block w-full sm:text-sm border-gray-300 rounded-l-md"
+                                value="SantiMB/roberta-base-bne-capitel-ner-plus-ONNX"
+                                list="exampleList">
+                                <datalist id="exampleList">
+                                    <option value="SantiMB/roberta-base-bne-capitel-ner-plus-ONNX">  
+                                    <option value="Xenova/distilbert-base-multilingual-cased-ner-hrl">
+                                    <option value="SantiMB/bert-spanish-cased-ner-onnx"></option>
+                                  </datalist>
+                            <button id="change-model-btn" 
+                                class="inline-flex items-center justify-center px-4 h-full border border-transparent text-sm font-medium rounded-r-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors duration-200">
+                                <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Aplicar
+                            </button>
                         </div>
+                        <p class="text-xs text-gray-500">Haz clic en "Aplicar" para cambiar el modelo</p>
                     </div>
                 </div>
-
+                
                 <label for="anonimization-mode" class="block text-sm font-medium text-gray-700" id="anonmodelabel">Modo de anonimización:</label>
                 <div class="flex items-center space-x-4" id="buttonconti">
                     <select id="anonimization-mode" class="w-2/6 p-2 border rounded-md">
