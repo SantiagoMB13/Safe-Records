@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,34 +11,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.png" type="image/png">
     <script src="scripts/index.js" type="module"></script>
-    <style>
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .float-animation {
-            animation: float 5s ease-in-out infinite;
-        }
-    </style>
 </head>
-<body class="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-12 px-4 sm:px-6 lg:px-8 relative overflow-x-hidden">
-    <!-- Modern side decorations -->
-    <div class="fixed inset-y-0 left-0 w-16 pointer-events-none">
-        <div class="h-full flex flex-col justify-between py-8">
-            <div class="w-16 h-16 rounded-full bg-gray-300 opacity-70 float-animation"></div>
-            <div class="w-24 h-24 rounded-full bg-gray-300 opacity-60 float-animation" style="animation-delay: 0.5s;"></div>
-            <div class="w-16 h-16 rounded-full bg-gray-300 opacity-50 float-animation" style="animation-delay: 1s;"></div>
-        </div>
-    </div>
-    <div class="fixed inset-y-0 right-0 w-16 pointer-events-none">
-        <div class="h-full flex flex-col justify-between items-end py-8">
-            <div class="w-16 h-16 rounded-full bg-gray-300 opacity-50 float-animation" style="animation-delay: 1.5s;"></div>
-            <div class="w-24 h-24 rounded-full bg-gray-300 opacity-60 float-animation" style="animation-delay: 2s;"></div>
-            <div class="w-16 h-16 rounded-full bg-gray-300 opacity-70 float-animation" style="animation-delay: 2.5s;"></div>
-        </div>
-    </div>
-
+<body class="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-12 px-4 sm:px-6 lg:px-8">
     <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white p-6 rounded-lg shadow-xl text-center">
             <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-800 mx-auto mb-4"></div>
@@ -48,6 +22,8 @@
 
     <div class="max-w-4xl mx-auto">
         <div class="text-center mb-8 relative">
+            <div class="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-gray-300 to-gray-400 rounded-full opacity-50 transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-gray-200 to-gray-300 rounded-full opacity-50 transform translate-x-1/2 translate-y-1/2"></div>
             <svg class="inline-block w-24 h-24 text-gray-800 mb-4 animate-pulse filter drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
             </svg>
