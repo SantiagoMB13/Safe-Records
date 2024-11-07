@@ -11,8 +11,19 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.png" type="image/png">
     <script src="scripts/index.js" type="module"></script>
+    <style>
+        .custom-gradient {
+            background: linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%);
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .custom-border {
+            border: 2px solid #e5e7eb;
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-12 px-4 sm:px-6 lg:px-8">
+<body class="min-h-screen custom-gradient py-8 px-4 sm:px-6 lg:px-8">
     <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white p-6 rounded-lg shadow-xl text-center">
             <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-800 mx-auto mb-4"></div>
@@ -20,123 +31,123 @@
         </div>
     </div>
 
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-5xl mx-auto">
         <div class="text-center mb-8 relative">
-            <div class="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-gray-300 to-gray-400 rounded-full opacity-50 transform -translate-x-1/2 -translate-y-1/2"></div>
-            <div class="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-gray-200 to-gray-300 rounded-full opacity-50 transform translate-x-1/2 translate-y-1/2"></div>
-            <svg class="inline-block w-24 h-24 text-gray-800 mb-4 animate-pulse filter drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div class="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-gray-300 to-gray-400 rounded-full opacity-50 transform -translate-x-1/2 -translate-y-1/2 blur-md"></div>
+            <div class="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-gray-200 to-gray-300 rounded-full opacity-50 transform translate-x-1/2 translate-y-1/2 blur-md"></div>
+            <svg class="inline-block w-32 h-32 text-gray-800 mb-6 animate-pulse filter drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
             </svg>
-            <h1 class="text-5xl font-extrabold text-gray-900 mb-2 filter drop-shadow-lg">
+            <h1 class="text-6xl font-extrabold text-gray-900 mb-4 filter drop-shadow-lg">
                 SafeRecords
             </h1>
-            <p class="mt-2 text-xl text-gray-600 italic">
+            <p class="mt-2 text-2xl text-gray-600 italic max-w-3xl mx-auto">
                 Proteja la privacidad de sus datos con nuestro
                 <span class="font-semibold text-gray-800">avanzado sistema de anonimización</span>
             </p>
-            <div class="w-32 h-1 bg-gradient-to-r from-gray-400 to-gray-600 mx-auto mt-4 rounded-full"></div>
+            <div class="w-48 h-2 bg-gradient-to-r from-gray-400 to-gray-600 mx-auto mt-6 rounded-full"></div>
         </div>
         
-        <div class="bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm shadow-2xl rounded-xl p-8 transition-all hover:shadow-3xl">
-            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Panel de Control</h2>
+        <div class="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-2xl rounded-xl p-8 transition-all hover:shadow-3xl custom-shadow custom-border">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Panel de Control</h2>
             
-            <div class="space-y-6">
+            <div class="space-y-8">
                 <div class="relative group" id="inputdiv">
-                    <textarea id="input-text" placeholder="Ingrese su texto aquí..." class="w-full min-h-[150px] p-3 border rounded-md focus:ring-2 focus:ring-gray-500 transition-all" onkeyup="textAreaAdjust(this)"></textarea>
-                    <svg class="absolute right-3 top-3 h-5 w-5 text-gray-400 group-hover:text-gray-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <textarea id="input-text" placeholder="Ingrese su texto aquí..." class="w-full min-h-[200px] p-4 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 transition-all text-lg"></textarea>
+                    <svg class="absolute right-4 top-4 h-6 w-6 text-gray-400 group-hover:text-gray-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
                 </div>
 
-                <div class="space-y-2">
-                    <input type="file" id="file-input" multiple class="hidden" />
-                    <div class="flex items-center space-x-4">
-                        <label for="file-input" class="cursor-pointer bg-white text-gray-800 px-4 py-2 rounded-md border border-gray-800 hover:bg-gray-100 transition-colors group">
-                            <svg class="inline-block mr-2 h-5 w-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex-grow">
+                        <input type="file" id="file-input" multiple class="hidden" />
+                        <label for="file-input" class="cursor-pointer bg-gray-100 text-gray-800 px-6 py-3 rounded-lg border-2 border-gray-300 hover:bg-gray-200 transition-colors group inline-flex items-center">
+                            <svg class="mr-2 h-6 w-6 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
                             </svg>
                             Subir archivos
                         </label>
-                        <span id="file-count" class="text-sm text-gray-500">No hay archivos seleccionados</span>
+                        <span id="file-count" class="ml-4 text-sm text-gray-500">No hay archivos seleccionados</span>
+                    </div>
+
+                    <div class="flex-grow">
+                        <label for="anonimization-mode" class="block text-sm font-medium text-gray-700 mb-1">Modo de anonimización:</label>
+                        <select id="anonimization-mode" class="w-full p-3 border-2 border-gray-300 rounded-lg text-lg">
+                            <option value="generic">Genérico</option>
+                            <option value="advanced">Avanzado</option>
+                        </select>
                     </div>
                 </div>
 
-                <!-- Añadir después del selector de modo de anonimización -->
                 <div class="flex items-center mt-4 w-full">
-                    <svg class="inline-block mr-2 h-5 w-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="inline-block mr-4 h-6 w-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     <div class="w-full">
-                        <label for="model-selector" class="block text-sm font-medium text-gray-700">Modelo actual:</label>
-                        <div class="mt-1 flex h-10 rounded-md shadow-sm w-full">
+                        <label for="model-selector" class="block text-sm font-medium text-gray-700 mb-1">Modelo actual:</label>
+                        <div class="mt-1 flex h-12 rounded-lg shadow-sm w-full">
                             <input type="text" id="model-selector" name="model-selector" 
-                                class="focus:ring-gray-500 focus:border-gray-500 block w-full sm:text-sm border-gray-300 rounded-l-md"
+                                class="focus:ring-gray-500 focus:border-gray-500 block w-full text-lg border-gray-300 rounded-l-lg"
                                 value="SantiMB/roberta-base-bne-capitel-ner-plus-ONNX"
                                 list="exampleList">
-                                <datalist id="exampleList">
-                                    <option value="SantiMB/roberta-base-bne-capitel-ner-plus-ONNX">  
-                                    <option value="Xenova/distilbert-base-multilingual-cased-ner-hrl">
-                                    <option value="SantiMB/bert-spanish-cased-ner-onnx"></option>
-                                  </datalist>
+                            <datalist id="exampleList">
+                                <option value="SantiMB/roberta-base-bne-capitel-ner-plus-ONNX">  
+                                <option value="Xenova/distilbert-base-multilingual-cased-ner-hrl">
+                                <option value="SantiMB/bert-spanish-cased-ner-onnx">
+                            </datalist>
                             <button id="change-model-btn" 
-                                class="inline-flex items-center justify-center px-4 h-full border border-transparent text-sm font-medium rounded-r-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors duration-200">
-                                <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                class="inline-flex items-center justify-center px-6 h-full border-2 border-gray-300 text-lg font-medium rounded-r-lg text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors duration-200">
+                                <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
                                 Aplicar
                             </button>
                         </div>
-                        <p class="text-xs text-gray-500">Haz clic en "Aplicar" para cambiar el modelo</p>
+                        <p class="text-xs text-gray-500 mt-1">Haz clic en "Aplicar" para cambiar el modelo</p>
                     </div>
                 </div>
                 
-                <label for="anonimization-mode" class="block text-sm font-medium text-gray-700" id="anonmodelabel">Modo de anonimización:</label>
-                <div class="flex items-center space-x-4" id="buttonconti">
-                    <select id="anonimization-mode" class="w-2/6 p-2 border rounded-md">
-                        <option value="generic">Genérico</option>
-                        <option value="advanced">Avanzado</option>
-                    </select>
-                    <button id="runmodelbtn" class="w-5/6 bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors group">
-                        <svg class="inline-block mr-2 h-5 w-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
-                        </svg>
-                        Anonimizar
-                    </button>
-                </div>
+                <button id="runmodelbtn" class="w-full bg-gray-800 text-white px-6 py-4 rounded-lg hover:bg-gray-700 transition-colors group text-xl font-semibold">
+                    <svg class="inline-block mr-3 h-6 w-6 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+                    </svg>
+                    Anonimizar
+                </button>
 
-                <div id="loading-indicator" class="hidden flex items-center justify-center p-4 bg-gray-100 rounded-md">
-                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <div id="loading-indicator" class="hidden flex items-center justify-center p-6 bg-gray-100 rounded-lg">
+                    <svg class="animate-spin -ml-1 mr-3 h-8 w-8 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    <span class="text-gray-800 font-semibold">Anonimizando datos...</span>
+                    <span class="text-gray-800 font-semibold text-xl">Anonimizando datos...</span>
                 </div>
 
-                <div id="result" class="mt-6 p-4 bg-white border rounded-md shadow-inner hidden">
-                    <h3 class="font-semibold mb-2 flex items-center">
-                        <svg class="mr-2 h-5 w-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div id="result" class="mt-8 p-6 bg-white border-2 border-gray-200 rounded-lg shadow-inner hidden">
+                    <h3 class="font-semibold text-2xl mb-4 flex items-center">
+                        <svg class="mr-3 h-7 w-7 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                         </svg>
                         Resultados:
                     </h3>
-                    <div id="result-content"></div>
+                    <div id="result-content" class="text-lg"></div>
                 </div>
 
                 <div class="flex flex-col sm:flex-row justify-between gap-4">
-                    <button id="downloadZipBtn" class="hidden w-full sm:w-auto bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors group">
-                        <svg class="inline-block mr-2 h-5 w-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <button id="downloadZipBtn" class="hidden w-full sm:w-auto bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors group text-lg font-semibold">
+                        <svg class="inline-block mr-2 h-6 w-6 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
                         Descargar Archivos Anonimizados
                     </button>
-                    <button id="downloadSingleBtn" class="hidden w-full sm:w-auto bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors group">
-                        <svg class="inline-block mr-2 h-5 w-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <button id="downloadSingleBtn" class="hidden w-full sm:w-auto bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors group text-lg font-semibold">
+                        <svg class="inline-block mr-2 h-6 w-6 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
                         Descargar Texto Anonimizado
                     </button>
-                    <button id="clearResultsBtn" class="hidden w-full sm:w-auto bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors group">
-                        <svg class="inline-block mr-2 h-5 w-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <button id="clearResultsBtn" class="hidden w-full sm:w-auto bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors group text-lg font-semibold">
+                        <svg class="inline-block mr-2 h-6 w-6 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                         </svg>
                         Borrar Resultados
